@@ -2,7 +2,32 @@
 ### Flask: The Traditional WSGI Server Framework
 ### FastAPI: The Modern Async ASGI Server Framework
 
+##### Flask Syntax: Generic @app.route(),
+```
+# Default GET request
+@app.route("/")
+def home():
+    return "Hello from Flask!"
 
+# Explicitly specifying HTTP methods
+@app.route("/submit", methods=["POST", "PUT"])
+def submit_data():
+```
+*Modern Flask added shorthand decorators like @app.get() and @app.post(), but @app.route() remains the standard practice in most Flask codebases*
+
+##### FastAPI Syntax: Method-Specific Decorators
+HTTP method in the decorator name itself (@app.get(), @app.post(), @app.delete(), etc.):
+```
+# Explicit GET route
+@app.get("/")
+def home():
+    return {"message": "Hello from FastAPI!"}
+
+# Explicit POST route
+@app.post("/submit")
+def submit_data():
+    return {"message": "Data submitted!"}
+```
 #### Decorators 
 - the lines starting with `@`, like `@app.get("/stream")` act as the registry or router that exposes your functions to the outside world as `web endpoints`.
 
